@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Magic Draft Deck</title>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css' rel='stylesheet'>
+    <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js'></script>
+  </head>
+  <body>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-1'></div>
+        <div class='col-md-10'>
+          <h2>Enter your draft deck</h2>
+        </div>
+      </div>
+    </div>
+    <div class='container-fluid'>
+      <div class='row'>
+        <div class='col-md-2'>
+          Things one
+        </div>
+        <div class='col-md-10'>
+          <form class='form-inline'>
+            <div class='form-group'>
+              <label for='set'>Set</label>
+              <select class='form-control' id='set'>
+                <option value='KTR'>Khans of Tarkir</option>
+                <option value='FRF'>Fate Reforged</option>
+              </select>
+            </div>
+            <div class='form-group'>
+              <label for='cardNumber'>Card No.</label>
+              <input class='form-control' id='cardNumber' placeholder='0' type='number'>
+            </div>
+            <button class='btn btn-default' type='submit'>Send invitation</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

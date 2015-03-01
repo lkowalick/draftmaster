@@ -1,0 +1,28 @@
+!!!
+%html
+  %head
+    %title Magic Draft Deck
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css")
+    %link(rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css")
+    %script(src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js")
+  %body
+    %div.container-fluid
+      %div.row
+        %div.col-md-1
+        %div.col-md-10
+          %h2 Enter your draft deck
+    %div.container-fluid
+      %div.row
+        %div.col-md-2
+          Things one
+        %div.col-md-10
+          %form.form-inline
+            %div.form-group
+              %label(for="set") Set
+              %select#set.form-control
+                %option(value="KTR") Khans of Tarkir
+                %option(value="FRF") Fate Reforged
+            %div.form-group
+              %label(for="cardNumber") Card No.
+              %input#cardNumber.form-control(type="number" placeholder="0")
+            %button.btn.btn-default(type="submit") Send invitation
