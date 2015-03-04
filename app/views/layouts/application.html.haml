@@ -2,9 +2,61 @@
 %html
   %head
     %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
-    %title Mtg
+    %title Magic Draft Deck
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    = yield
+    %nav.navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{:href => "#"}
+            MtG Draft Master
+    .container-fluid
+      = yield
+      .row
+        .col-md-1
+        .col-md-11
+          %form
+            .row
+              .col-xs-3
+                .form-group
+                  %select.form-control
+                    %option{value: "KTK"} Khans of Tarkir
+                    %option{value: "FRF"} Fate Reforged
+              .col-xs-2
+                .form-group
+                  %input.form-control{ type: "text",
+                                       autofocus: "true",
+                                       placeholder: "Card No." }
+              .col-xs-1
+                %button.btn.btn-default{type: "submit"} Add Card
+    .container-fluid
+      .row
+        .col-md-2
+          %h4 Blue
+          %ul.list-unstyled
+            %li Counterspell
+            %li Counterspell
+        .col-md-2
+          %h4 Black
+          %ul.list-unstyled
+            %li Counterspell
+            %li Counterspell
+        .col-md-2
+          %h4 Red
+          %ul.list-unstyled
+            %li Counterspell
+            %li Counterspell
+        .col-md-2
+          %h4 Green
+          %ul.list-unstyled
+            %li Counterspell
+            %li Counterspell
+        .col-md-2
+          %h4 White
+          %ul.list-unstyled
+            %li Counterspell
+            %li Counterspell
+        .col-md-2
+          %h4 Other
