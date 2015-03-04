@@ -1,17 +1,7 @@
-.row
-  .col-md-1
-  .col-md-11
-    %form
-      .row
-        .col-xs-3
-          .form-group
-            %select.form-control
-              %option{value: "KTK"} Khans of Tarkir
-              %option{value: "FRF"} Fate Reforged
-        .col-xs-2
-          .form-group
-            %input.form-control{ type: "text",
-                                 autofocus: "true",
-                                 placeholder: "Card No." }
-        .col-xs-1
-          %button.btn.btn-default{type: "submit"} Add Card
+= form_for @deck, url: {action: "create"}, html: {class: "nifty_form"} do |f|
+  .row
+    .col-xs-3.col-xs-offset-1
+      .form-group
+        = f.text_field :name, class: 'form-control', autofocus: "true", placeholder: "Deck Name"
+    .col-xs-1
+      = f.submit "Create Deck", class: 'btn btn-default'
