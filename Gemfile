@@ -23,6 +23,7 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'capybara'
+  gem 'shoulda-matchers'
 end
 
 ruby '2.2.0'
