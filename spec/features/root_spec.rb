@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'the main index page' do
-  let(:deckname) { 'Name of Deck' }
+  let(:deckname) { SecureRandom.uuid }
 
   before do
     visit '/'
