@@ -26,4 +26,4 @@ group :development, :test do
   gem 'shoulda-matchers'
 end
 
-ruby '2.2.0'
+ruby '2.2.1'
