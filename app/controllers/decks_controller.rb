@@ -12,10 +12,21 @@ class DecksController < ApplicationController
   end
 
   def update
+    card = Card.find_by(card_params)
+    deck = Deck.find(params[:id])
+
+    if CardDeck.create(deck: deck, card: card)
+      flash.notice = 'Great Success'
+    else
+      flash.notice = 'Something went wrong'
+    end
+
+    redirect_to deck
   end
 
   def show
     @deck = Deck.find(params[:id])
+    @card = @deck.cards.build
   end
 
   def edit
@@ -32,5 +43,9 @@ class DecksController < ApplicationController
 
   def deck_params
     params.require(:deck).permit(:name)
+  end
+
+  def card_params
+    params.require(:card).permit(:number, :set)
   end
 end
