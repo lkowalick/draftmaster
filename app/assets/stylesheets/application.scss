@@ -1,2 +1,12 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
+
+.flash-notice {
+    @extend .alert;
+    @extend .alert-success;
+}
+
+.flash-alert {
+    @extend .alert;
+    @extend .alert-danger;
+}
