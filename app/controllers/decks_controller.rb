@@ -12,7 +12,7 @@ class DecksController < ApplicationController
   end
 
   def update
-    card = Card.find_by(card_params)
+    card = Card.find_by!(card_params)
     deck = Deck.find(params[:id])
 
     if CardDeck.create(deck: deck, card: card)

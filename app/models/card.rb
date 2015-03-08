@@ -1,4 +1,4 @@
 class Card < ActiveRecord::Base
   validates :number, uniqueness: { scope: :set }
-  validates :name, uniqueness: true
+  validates :name, uniqueness: { scope: :set }
 end

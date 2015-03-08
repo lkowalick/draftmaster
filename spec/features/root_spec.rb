@@ -30,6 +30,7 @@ RSpec.describe 'the main index page' do
     describe 'adding a card' do
       before do
         fill_in 'card_number', with: card.number
+        select card.set, from: 'card_set'
         click_on 'Add Card'
       end
 
