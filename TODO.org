@@ -2,6 +2,6 @@
 
 * DONE Default set is previous one used
 * DONE Make the alerts pretty
-* TODO Create Users and Authentication
 * TODO Clean up bootstrap layout stuff
 * TODO Clean up 'Add Card' form with ActionForm
+* TODO Create Users and Authentication
