@@ -3,9 +3,9 @@ class DecksController < ApplicationController
     deck = Deck.create(deck_params)
 
     if deck.save
-      flash.notice = 'Deck created successfully'
+      flash.notice = 'Deck created successfully.'
     else
-      flash.notice = 'Something went wrong'
+      flash.alert = 'Something went wrong.'
     end
 
     redirect_to deck
@@ -16,9 +16,9 @@ class DecksController < ApplicationController
     deck = Deck.find(params[:id])
 
     if CardDeck.create(deck: deck, card: card)
-      flash.notice = 'Great Success'
+      flash.notice = 'Card added.'
     else
-      flash.notice = 'Something went wrong'
+      flash.alert = 'Something went wrong.'
     end
 
     redirect_to deck
