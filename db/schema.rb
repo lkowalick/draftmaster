@@ -11,14 +11,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150307152034) do
+ActiveRecord::Schema.define(version: 20150308194354) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "card_decks", force: :cascade do |t|
-    t.integer "deck_id"
-    t.integer "card_id"
+    t.integer  "deck_id"
+    t.integer  "card_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   add_index "card_decks", ["card_id"], name: "index_card_decks_on_card_id", using: :btree
@@ -32,7 +34,7 @@ ActiveRecord::Schema.define(version: 20150307152034) do
     t.datetime "updated_at", null: false
   end
 
-  add_index "cards", ["name"], name: "index_cards_on_name", unique: true, using: :btree
+  add_index "cards", ["name", "set"], name: "index_cards_on_name_and_set", unique: true, using: :btree
   add_index "cards", ["number", "set"], name: "index_cards_on_number_and_set", unique: true, using: :btree
 
   create_table "decks", force: :cascade do |t|

@@ -1,42 +1,50 @@
 require 'rails_helper'
 
-RSpec.describe 'the main index page' do
+RSpec.feature 'Creating a deck and adding some cards' do
   let(:deckname) { SecureRandom.uuid }
 
-  let(:card) do
+  let!(:card) do
     Card.where(name: SecureRandom.uuid,
                number: 1,
-               set: 'KTK').first_or_create!
+               set: SecureRandom.uuid).first_or_create!
   end
 
-  before do
+  let!(:other_card) do
+    Card.where(name: SecureRandom.uuid,
+               number: 2,
+               set: SecureRandom.uuid).first_or_create!
+  end
+
+  scenario "Create a deck and add a card" do
     visit '/'
-  end
 
-  it 'presents me with an interface' do
     expect(page).to have_content 'MtG Draft Master'
+
+    fill_in 'deck_name', with: deckname
+    click_on 'Create Deck'
+
+    expect(page).to have_content deckname
+
+    fill_in 'card_number', with: card.number
+    select card.set, from: 'card_set'
+    click_on 'Add Card'
+
+    expect(page).to have_content card.name
   end
 
-  describe 'creating a new deck name' do
+  describe "Default card set" do
     before do
+      visit '/'
       fill_in 'deck_name', with: deckname
       click_on 'Create Deck'
     end
 
-    it 'sends me to the newly created deck' do
-      expect(page).to have_content deckname
-    end
+    scenario "when a card has just been selected" do
+      fill_in 'card_number', with: card.number
+      select card.set, from: 'card_set'
+      click_on 'Add Card'
 
-    describe 'adding a card' do
-      before do
-        fill_in 'card_number', with: card.number
-        select card.set, from: 'card_set'
-        click_on 'Add Card'
-      end
-
-      it 'adds the card to the page' do
-        expect(page).to have_content card.name
-      end
+      expect(page.has_select?('card_set', selected: card.set)).to be_truthy
     end
   end
 end

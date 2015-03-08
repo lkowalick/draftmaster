@@ -1,3 +1,7 @@
-- [ ] Default set of previous one used
-- [ ] Make the alerts pretty
-- [ ] Create Users and Authentication
+#+TODO: TODO WORKING | DONE
+
+* DONE Default set is previous one used
+* WORKING Make the alerts pretty
+* TODO Create Users and Authentication
+* TODO Clean up bootstrap layout stuff
+* TODO Clean up 'Add Card' form with ActionForm

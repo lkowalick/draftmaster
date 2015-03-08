@@ -7,7 +7,7 @@
       .row
         .col-xs-2.col-xs-offset-1
           .form-group
-            = f.select :set, %w{ FRF KTK }, {}, class: 'form-control'
+            = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
         .col-xs-3
           .form-group
             = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."

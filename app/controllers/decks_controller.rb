@@ -26,6 +26,8 @@ class DecksController < ApplicationController
 
   def show
     @deck = Deck.find(params[:id])
+    @sets = Card.sets
+    @most_recent_set = @deck.most_recently_added_set
     @card = Card.new
   end
 
