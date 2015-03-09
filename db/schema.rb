@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150308201732) do
+ActiveRecord::Schema.define(version: 20150309002322) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -32,6 +32,8 @@ ActiveRecord::Schema.define(version: 20150308201732) do
     t.string   "name"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "mana_cost"
+    t.integer  "cmc"
   end
 
   add_index "cards", ["number", "set"], name: "index_cards_on_number_and_set", unique: true, using: :btree

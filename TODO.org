@@ -2,6 +2,14 @@
 
 * DONE Default set is previous one used
 * DONE Make the alerts pretty
+* WORKING Sort Cards by Casting Cost into Columns
+  - [X] Add casting cost to cards
+  - [X] Show casting cost with card
+  - [ ] Columns based on CMC
+* TODO Add Card Pictures (hover?)
+* TODO Show decks in Index
+* TODO Allow deletion of cards from deck
+* TODO Fix problem with card numbers and sets?
 * TODO Clean up bootstrap layout stuff
 * TODO Clean up 'Add Card' form with ActionForm
 * TODO Create Users and Authentication

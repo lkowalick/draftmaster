@@ -4,14 +4,18 @@ RSpec.feature 'Creating a deck and adding some cards' do
   let(:deckname) { SecureRandom.uuid }
 
   let!(:card) do
-    Card.where(name: SecureRandom.uuid,
+    Card.where(mana_cost: '1UG',
+               name: SecureRandom.uuid,
                number: 1,
+               cmc: 1,
                set: SecureRandom.uuid).first_or_create!
   end
 
   let!(:other_card) do
     Card.where(name: SecureRandom.uuid,
                number: 2,
+               cmc: 2,
+               mana_cost: '2GB',
                set: SecureRandom.uuid).first_or_create!
   end
 
@@ -30,6 +34,7 @@ RSpec.feature 'Creating a deck and adding some cards' do
     click_on 'Add Card'
 
     expect(page).to have_content card.name
+    expect(page).to have_content card.mana_cost
   end
 
   describe "Default card set" do
