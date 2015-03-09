@@ -2,10 +2,10 @@
 
 * DONE Default set is previous one used
 * DONE Make the alerts pretty
-* WORKING Sort Cards by Casting Cost into Columns
+* DONE Sort Cards by Casting Cost into Columns
   - [X] Add casting cost to cards
   - [X] Show casting cost with card
-  - [ ] Columns based on CMC
+  - [X] Columns based on CMC
 * TODO Add Card Pictures (hover?)
 * TODO Show decks in Index
 * TODO Allow deletion of cards from deck
