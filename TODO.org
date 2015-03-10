@@ -6,6 +6,7 @@
   - [X] Add casting cost to cards
   - [X] Show casting cost with card
   - [X] Columns based on CMC
+* WORKING Sort Cards by Card Type
 * TODO Add Card Pictures (hover?)
 * TODO Show decks in Index
 * TODO Allow deletion of cards from deck
