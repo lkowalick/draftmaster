@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150309002322) do
+ActiveRecord::Schema.define(version: 20150311001844) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,6 +25,14 @@ ActiveRecord::Schema.define(version: 20150309002322) do
 
   add_index "card_decks", ["card_id"], name: "index_card_decks_on_card_id", using: :btree
   add_index "card_decks", ["deck_id"], name: "index_card_decks_on_deck_id", using: :btree
+
+  create_table "card_types", force: :cascade do |t|
+    t.integer "card_id"
+    t.integer "type_id"
+  end
+
+  add_index "card_types", ["card_id"], name: "index_card_types_on_card_id", using: :btree
+  add_index "card_types", ["type_id"], name: "index_card_types_on_type_id", using: :btree
 
   create_table "cards", force: :cascade do |t|
     t.string   "set"
@@ -44,6 +52,14 @@ ActiveRecord::Schema.define(version: 20150309002322) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "types", force: :cascade do |t|
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   add_foreign_key "card_decks", "cards"
   add_foreign_key "card_decks", "decks"
+  add_foreign_key "card_types", "cards"
+  add_foreign_key "card_types", "types"
 end
