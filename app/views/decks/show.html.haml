@@ -8,7 +8,7 @@
         .col-xs-2.col-xs-offset-1
           .form-group
             = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
-        .col-xs-3
+        .col-xs-1
           .form-group
             = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."
         .col-xs-1
@@ -20,4 +20,5 @@
       %h4= type
       %ul.list-unstyled
         - @deck.cards.joins(:types).where(types: { name: type }).each do |card|
-          %li #{card.name}   #{card.mana_cost}
+          %li
+            %a(tabindex="0" data-toggle="popover" data-trigger="hover" data-content="#{image_tag 'rally the ancestors.jpg'}" data-html="true")#{card.name} #{card.mana_cost}
