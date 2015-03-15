@@ -7,7 +7,8 @@ task add_card_data: :environment do
                                               name: card['name'],
                                               number: card['number'],
                                               cmc: card['cmc'],
-                                              mana_cost: card['manaCost'])
+                                              mana_cost: card['manaCost'],
+                                              image_name: card['imageName'])
 
         card['types'].each do |type_name|
           CardType.create(card: card_record, type: Type.find_or_create_by!(name: type_name))

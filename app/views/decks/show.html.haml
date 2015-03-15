@@ -21,4 +21,5 @@
       %ul.list-unstyled
         - @deck.cards.joins(:types).where(types: { name: type }).each do |card|
           %li
-            %a(tabindex="0" data-toggle="popover" data-trigger="hover" data-content="#{image_tag 'rally the ancestors.jpg'}" data-html="true")#{card.name} #{card.mana_cost}
+            %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
+              #{card.name} #{card.mana_cost}
