@@ -8,6 +8,8 @@
   - [X] Columns based on CMC
 * DONE Sort Cards by Card Type
 * TODO Prioritize types (only example: artifact creature should be creature)
+* TODO Display types better
+* TODO Add Planewalker type displays
 * TODO Add Card Pictures (hover?)
 * TODO Show decks in Index
 * TODO Allow deletion of cards from deck
