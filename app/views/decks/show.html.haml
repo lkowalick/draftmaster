@@ -15,13 +15,9 @@
           = f.submit "Add Card", class: 'btn btn-default'
 
 .row
-  - (1..6).each do |i|
+  - %w{ Artifact Creature Instant Sorcery Enchantment Land }.each do |type|
     .col-xs-2
-      %h4= i < 6 ? i : '6+'
+      %h4= type
       %ul.list-unstyled
-        - if i < 6
-          - @deck.cards.where(cmc: i).each do |card|
-            %li #{card.name}   #{card.mana_cost}
-        - else
-          - @deck.cards.where(cmc: (6..10000)).each do |card|
-            %li #{card.name}   #{card.mana_cost}
+        - @deck.cards.joins(:types).where(types: { name: type }).each do |card|
+          %li #{card.name}   #{card.mana_cost}
