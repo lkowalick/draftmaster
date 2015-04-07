@@ -7,6 +7,7 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'haml-rails'
 gem 'bootstrap-sass'
+gem 'actionform'
 
 gem 'jquery-rails'
 gem 'turbolinks'
@@ -24,6 +25,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'pry'
 end
 
 ruby '2.2.1'

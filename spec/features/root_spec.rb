@@ -1,6 +1,10 @@
 require 'rails_helper'
 
 RSpec.feature 'Creating a deck and adding some cards' do
+  before do
+    page.driver.browser.basic_authorize('covermymeds', 'draft2015')
+  end
+
   let(:deckname) { SecureRandom.uuid }
 
   let!(:card) do
@@ -50,6 +54,22 @@ RSpec.feature 'Creating a deck and adding some cards' do
       click_on 'Add Card'
 
       expect(page.has_select?('card_set', selected: card.set)).to be_truthy
+    end
+  end
+
+  describe "Easily adding lands" do
+    before do
+      visit '/'
+      fill_in 'deck_name', with: deckname
+      click_on 'Create Deck'
+    end
+
+    scenario "adding lands easily" do
+      select 'forest', from: 'land'
+      fill_in 'land_quantity', with: 6
+      click_on 'Add Lands'
+
+      expect(page).to have_content 'forest'
     end
   end
 end

@@ -1,21 +1,13 @@
 #+TODO: TODO WORKING | DONE
 
-* DONE Default set is previous one used
-* DONE Make the alerts pretty
-* DONE Sort Cards by Casting Cost into Columns
-  - [X] Add casting cost to cards
-  - [X] Show casting cost with card
-  - [X] Columns based on CMC
-* DONE Sort Cards by Card Type
-* DONE easy way of adding lands
-* DONE grouping cards by all types
-* DONE grouping cards by name
-* TODO Prioritize types (only example: artifact creature should be creature)
-* TODO Display types better
-* TODO Add Planewalker type displays
-* TODO Add Card Pictures (hover?)
+* WORKING Simple way to add land
 * TODO Show decks in Index
 * TODO Allow deletion of cards from deck
+* TODO Display types better
+* TODO Automatically associate dates/player names
+* TODO Prioritize types (only example: artifact creature should be creature)
+* TODO Add Planewalker type displays
+* TODO Add Card Pictures (hover?)
 * TODO Fix problem with card numbers and sets?
 * TODO Clean up bootstrap layout stuff
 * TODO Clean up 'Add Card' form with ActionForm

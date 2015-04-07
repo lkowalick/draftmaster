@@ -1,18 +1,28 @@
 %h2
   = @deck.name
 .row
-  .col-md-1
-  .col-md-11
+  .col-md-7
     = form_for @card, url: deck_path(@deck), html: { method: 'patch' } do |f|
       .row
         .col-xs-2.col-xs-offset-1
           .form-group
             = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
-        .col-xs-1
+        .col-xs-3
           .form-group
             = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."
         .col-xs-1
           = f.submit "Add Card", class: 'btn btn-default'
+  .col-md-5
+    = form_for @land_card, url: deck_path(@deck), html: { method: 'patch' } do |f|
+      .row
+        .col-xs-2
+          .form-group
+            = f.select :name, %w(Plains Forest Mountain Island Swamp) , {}, class: 'form-control'
+        .col-xs-2
+          .form-group
+            = f.number_field :number, class: 'form-control', placeholder: "Qty"
+        .col-xs-1
+          = f.submit "Add Lands", class: 'btn btn-default'
 
 .row
   - %w{ Artifact Creature Instant Sorcery Enchantment Land }.each do |type|
