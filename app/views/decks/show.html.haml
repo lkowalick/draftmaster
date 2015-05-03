@@ -1,28 +1,44 @@
 %h2
   = @deck.name
 .row
-  .col-md-7
+  .col-md-4
     = form_for @card, url: deck_path(@deck), html: { method: 'patch' } do |f|
       .row
-        .col-xs-2.col-xs-offset-1
+        .col-xs-4
           .form-group
             = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
-        .col-xs-3
+        .col-xs-5
           .form-group
             = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."
-        .col-xs-1
+        .col-xs-3
           = f.submit "Add Card", class: 'btn btn-default'
-  .col-md-5
-    = form_for @land_card, url: deck_path(@deck), html: { method: 'patch' } do |f|
-      .row
-        .col-xs-2
-          .form-group
-            = f.select :name, %w(Plains Forest Mountain Island Swamp) , {}, class: 'form-control'
-        .col-xs-2
-          .form-group
-            = f.number_field :number, class: 'form-control', placeholder: "Qty"
-        .col-xs-1
-          = f.submit "Add Lands", class: 'btn btn-default'
+  .col-md-8
+    = form_for @card_deck do |f|
+      .col-xs-2
+        = f.hidden_field :card_id, value: @forest.id
+        = f.hidden_field :deck_id, value: @deck.id
+        = f.submit "Add Forest", class: 'btn btn-default'
+    = form_for @card_deck do |f|
+      .col-xs-2
+        = f.hidden_field :card_id, value: @island.id
+        = f.hidden_field :deck_id, value: @deck.id
+        = f.submit "Add Island", class: 'btn btn-default'
+    = form_for @card_deck do |f|
+      .col-xs-2
+        = f.hidden_field :card_id, value: @mountain.id
+        = f.hidden_field :deck_id, value: @deck.id
+        = f.submit "Add Mountain", class: 'btn btn-default'
+    = form_for @card_deck do |f|
+      .col-xs-2
+        = f.hidden_field :card_id, value: @swamp.id
+        = f.hidden_field :deck_id, value: @deck.id
+        = f.submit "Add Swamp", class: 'btn btn-default'
+    = form_for @card_deck do |f|
+      .col-xs-2
+        = f.hidden_field :card_id, value: @plains.id
+        = f.hidden_field :deck_id, value: @deck.id
+        = f.submit "Add Plains", class: 'btn btn-default'
+
 
 .row
   - %w{ Artifact Creature Instant Sorcery Enchantment Land }.each do |type|

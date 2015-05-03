@@ -17,3 +17,6 @@
         = content_tag :div, msg, class: "flash-#{name}"
     .container-fluid
       = yield
+
+  - unless Rails.env.production?
+    %p Params: #{params}

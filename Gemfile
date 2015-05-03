@@ -28,4 +28,4 @@ group :development, :test do
   gem 'pry'
 end
 
-ruby '2.2.1'
+ruby '2.2.2'
