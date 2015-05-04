@@ -5,3 +5,20 @@
         = f.text_field :name, class: 'form-control', autofocus: "true", placeholder: "Deck Name"
     .col-xs-1
       = f.submit "Create Deck", class: 'btn btn-default'
+
+%table.table
+  %tr
+    %th Deck Name
+    %th Number of Cards
+    %th Remove?
+  - @decks.each do |deck|
+    %tr
+      %td= deck.name
+      %td= deck.cards.size
+      %td
+        = form_for deck, url: deck_path(deck), html: { method: 'delete' } do |f|
+          = f.submit "Delete #{deck.name}", class: 'btn btn-danger'
+
+
+
+

@@ -10,8 +10,11 @@
     %nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          %a.navbar-brand{:href => "#"}
+          .navbar-brand{:href => "/"}
             MtG Draft Master
+          %a{:href => "/"}
+            Home
+
     .container-fluid
       - flash.each do |name, msg|
         = content_tag :div, msg, class: "flash-#{name}"

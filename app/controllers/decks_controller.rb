@@ -24,6 +24,18 @@ class DecksController < ApplicationController
     redirect_to deck
   end
 
+  def destroy
+    deck = Deck.find(params[:id])
+
+    if deck.destroy
+      flash.notice = 'Deck Destroyed'
+    else
+      flash.alert = 'Something went wrong.'
+    end
+
+    redirect_to action: 'index'
+  end
+
   def show
     @deck = Deck.find(params[:id])
     @sets = Card.sets
@@ -45,6 +57,7 @@ class DecksController < ApplicationController
 
   def index
     @deck = Deck.new
+    @decks = Deck.all
   end
 
   private

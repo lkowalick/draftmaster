@@ -94,6 +94,34 @@ RSpec.feature 'Creating a deck and adding some cards' do
     card
   end
 
+  scenario "View and edit decks at root" do
+    visit '/'
+    fill_in 'deck_name', with: 'Deck One'
+    click_on 'Create Deck'
+
+    fill_in 'card_number', with: card.number
+    select card.set, from: 'card_set'
+    click_on 'Add Card'
+
+    click_on 'Home'
+
+    fill_in 'deck_name', with: 'Deck Two'
+    click_on 'Create Deck'
+
+    fill_in 'card_number', with: card.number
+    select card.set, from: 'card_set'
+    click_on 'Add Card'
+
+    click_on 'Home'
+
+    expect(page).to have_content 'Deck One'
+    expect(page).to have_content 'Deck Two'
+
+    click_on 'Delete Deck One'
+
+    expect(page).to_not have_content 'Deck One'
+  end
+
   scenario "Create a deck and add a card" do
     visit '/'
 
