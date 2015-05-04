@@ -1,7 +1,4 @@
-#+TODO: TODO WORKING | DONE
-
-* WORKING Simple way to add land
-* TODO Show decks in Index
+* DOING Show decks in Index
 * TODO Allow deletion of cards from deck
 * TODO Display types better
 * TODO Automatically associate dates/player names
@@ -12,3 +9,4 @@
 * TODO Clean up bootstrap layout stuff
 * TODO Clean up 'Add Card' form with ActionForm
 * TODO Create Users and Authentication
+* NEEDS IMPROV Simple way to add land
