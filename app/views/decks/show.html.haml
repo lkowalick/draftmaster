@@ -24,11 +24,24 @@
 
 
 .row
-  - %w{ Artifact Creature Instant Sorcery Enchantment Land }.each do |type|
-    .col-xs-2
-      %h4= type
-      %ul.list-unstyled
-        - @deck.cards.joins(:types).where(types: { name: type }).each do |card|
-          %li
-            %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
-              #{card.name} #{card.mana_cost}
+  .col-xs-4
+    %h4 Creatures
+    %ul.list-unstyled
+      - @deck.cards.joins(:types).where(types: { name: 'Creature' }).each do |card|
+        %li
+          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
+            #{card.name} #{card.mana_cost}
+  .col-xs-4
+    %h4 Inst/Sorc/Art/Ench/PWs
+    %ul.list-unstyled
+      - @deck.cards.joins(:types).where(types: { name: ['Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Planeswalker'] }).each do |card|
+        %li
+          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
+            #{card.name} #{card.mana_cost}
+  .col-xs-4
+    %h4 Lands
+    %ul.list-unstyled
+      - @deck.cards.joins(:types).where(types: { name: 'Land' }).each do |card|
+        %li
+          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
+            #{card.name} #{card.mana_cost}
