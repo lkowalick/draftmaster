@@ -3,12 +3,24 @@ class CardDecksController < ApplicationController
     card_deck = CardDeck.create(card_deck_params)
 
     if card_deck.save
-      flash.notice = 'Deck created successfully.'
+      flash.notice = 'Card added successfully.'
     else
       flash.alert = 'Something went wrong.'
     end
 
     redirect_to Deck.find(params[:card_deck][:deck_id])
+  end
+
+  def destroy
+    card_deck = CardDeck.find(params[:id])
+
+    if card_deck.destroy
+      flash.notice = 'Card removed successfully.'
+    else
+      flash.alert = 'Something went wrong.'
+    end
+
+    redirect_to card_deck.deck
   end
 
   private

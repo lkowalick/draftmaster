@@ -31,6 +31,8 @@
         %li
           %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
             #{card.name} #{card.mana_cost}
+          - card_deck = CardDeck.find_by(deck: @deck, card: card)
+          = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete
   .col-xs-4
     - ['Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Planeswalker'].each do |type|
       - cards = @deck.cards.joins(:types).where(types: { name: type })
@@ -41,6 +43,9 @@
             %li
               %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
                 #{card.name} #{card.mana_cost}
+              - card_deck = CardDeck.find_by(deck: @deck, card: card)
+              = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete
+  .col-xs-4
   .col-xs-4
     %h4 Lands
     %ul.list-unstyled
@@ -48,3 +53,5 @@
         %li
           %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
             #{card.name} #{card.mana_cost}
+          - card_deck = CardDeck.find_by(deck: @deck, card: card)
+          = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete

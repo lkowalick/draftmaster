@@ -140,6 +140,31 @@ RSpec.feature 'Creating a deck and adding some cards' do
     expect(page).to have_content card.mana_cost
   end
 
+  scenario "Create a deck, add a card, then remove a card" do
+    visit '/'
+
+    expect(page).to have_content 'MtG Draft Master'
+
+    fill_in 'deck_name', with: deckname
+    click_on 'Create Deck'
+
+    expect(page).to have_content deckname
+
+    fill_in 'card_number', with: card.number
+    select card.set, from: 'card_set'
+    click_on 'Add Card'
+
+    expect(page).to have_content card.name
+
+
+    card_deck = CardDeck.find_by!(deck: Deck.first, card: card)
+
+    find("a[href='#{card_deck_path(card_deck)}']").click
+
+    expect(page).to_not have_content card.name
+  end
+
+
   describe "Default card set" do
     before do
       visit '/'
