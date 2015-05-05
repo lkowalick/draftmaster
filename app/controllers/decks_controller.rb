@@ -41,12 +41,7 @@ class DecksController < ApplicationController
     @sets = Card.sets
     @most_recent_set = @deck.most_recently_added_set
     @card = Card.new
-    @card_deck = CardDeck.new(deck_id: params[:id])
-    @forest = Card.find_by!(name: 'Forest')
-    @island = Card.find_by!(name: 'Island')
-    @mountain = Card.find_by!(name: 'Mountain')
-    @swamp = Card.find_by!(name: 'Swamp')
-    @plains = Card.find_by!(name: 'Plains')
+    @land_card_decks = CardDeck.land_card_decks(@deck)
   end
 
   def edit

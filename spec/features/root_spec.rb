@@ -164,17 +164,17 @@ RSpec.feature 'Creating a deck and adding some cards' do
     end
 
     scenario "adding lands easily" do
-      click_on 'Add Forest'
-      click_on 'Add Island'
-      click_on 'Add Mountain'
-      click_on 'Add Swamp'
-      click_on 'Add Plains'
+      click_on 'Forest'
+      click_on 'Island'
+      click_on 'Mountain'
+      click_on 'Swamp'
+      click_on 'Plains'
 
-      expect(page).to have_content 'Forest'
-      expect(page).to have_content 'Island'
-      expect(page).to have_content 'Plains'
-      expect(page).to have_content 'Swamp'
-      expect(page).to have_content 'Mountain'
+      expect(page).to have_css 'li', text: 'Forest'
+      expect(page).to have_css 'li', text: 'Island'
+      expect(page).to have_css 'li', text: 'Plains'
+      expect(page).to have_css 'li', text: 'Swamp'
+      expect(page).to have_css 'li', text: 'Mountain'
     end
   end
 end

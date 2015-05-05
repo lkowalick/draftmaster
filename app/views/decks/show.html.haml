@@ -13,31 +13,14 @@
         .col-xs-3
           = f.submit "Add Card", class: 'btn btn-default'
   .col-md-8
-    = form_for @card_deck do |f|
+    .col-xs-2
+    - @land_card_decks.each do |card_deck|
       .col-xs-2
-        = f.hidden_field :card_id, value: @forest.id
-        = f.hidden_field :deck_id, value: @deck.id
-        = f.submit "Add Forest", class: 'btn btn-default'
-    = form_for @card_deck do |f|
-      .col-xs-2
-        = f.hidden_field :card_id, value: @island.id
-        = f.hidden_field :deck_id, value: @deck.id
-        = f.submit "Add Island", class: 'btn btn-default'
-    = form_for @card_deck do |f|
-      .col-xs-2
-        = f.hidden_field :card_id, value: @mountain.id
-        = f.hidden_field :deck_id, value: @deck.id
-        = f.submit "Add Mountain", class: 'btn btn-default'
-    = form_for @card_deck do |f|
-      .col-xs-2
-        = f.hidden_field :card_id, value: @swamp.id
-        = f.hidden_field :deck_id, value: @deck.id
-        = f.submit "Add Swamp", class: 'btn btn-default'
-    = form_for @card_deck do |f|
-      .col-xs-2
-        = f.hidden_field :card_id, value: @plains.id
-        = f.hidden_field :deck_id, value: @deck.id
-        = f.submit "Add Plains", class: 'btn btn-default'
+        = form_for card_deck do |f|
+          = f.hidden_field :card_id
+          = f.hidden_field :deck_id
+          = f.button nil, class: 'btn btn-default btn-block' do
+            #{add_button} #{card_deck.card.name}
 
 
 .row
