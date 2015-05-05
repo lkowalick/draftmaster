@@ -1,8 +1,5 @@
-* TODO Allow deletion of cards from deck
-* TODO Display types better
-* TODO Automatically associate dates/player names
-* TODO Prioritize types (only example: artifact creature should be creature)
-* TODO Add Planewalker type displays
-* TODO Clean up bootstrap layout stuff
-* TODO Create Users and Authentication
-* NEEDS IMPROV Simple way to add land
+- Allow deletion of cards from deck
+- Group cards by name
+- Automatically associate dates/player names
+- Clean up bootstrap layout stuff
+- Create Users and Authentication
