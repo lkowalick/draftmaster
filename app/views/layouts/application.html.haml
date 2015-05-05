@@ -7,13 +7,16 @@
     = javascript_include_tag 'application', 'data-turbolinks-track' => true
     = csrf_meta_tags
   %body
-    %nav.navbar.navbar-default
+    .nav.navbar.navbar-default
       .container-fluid
         .navbar-header
-          .navbar-brand{:href => "/"}
+          .navbar-brand
             MtG Draft Master
-          %a{:href => "/"}
-            Home
+        %ul.nav.navbar-nav
+          %li
+            %a{:href => "/"}
+              Home
+
 
     .container-fluid
       - flash.each do |name, msg|

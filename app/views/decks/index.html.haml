@@ -9,15 +9,11 @@
 %table.table
   %tr
     %th Deck Name
-    %th Number of Cards
     %th Remove?
   - @decks.each do |deck|
     %tr
-      %td= deck.name
-      %td= deck.cards.size
-      %td
-        = form_for deck, url: deck_path(deck), html: { method: 'delete' } do |f|
-          = f.submit "Delete #{deck.name}", class: 'btn btn-danger'
+      %td= link_to deck.name, deck
+      %td= button_to "Delete #{deck.name}", deck, class: 'btn btn-danger', method: :delete
 
 
 

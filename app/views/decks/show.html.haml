@@ -32,12 +32,15 @@
           %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
             #{card.name} #{card.mana_cost}
   .col-xs-4
-    %h4 Inst/Sorc/Art/Ench/PWs
-    %ul.list-unstyled
-      - @deck.cards.joins(:types).where(types: { name: ['Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Planeswalker'] }).each do |card|
-        %li
-          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
-            #{card.name} #{card.mana_cost}
+    - ['Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Planeswalker'].each do |type|
+      - cards = @deck.cards.joins(:types).where(types: { name: type })
+      - if cards.exists?
+        %h4= type.pluralize
+        %ul.list-unstyled
+          - cards.each do |card|
+            %li
+              %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
+                #{card.name} #{card.mana_cost}
   .col-xs-4
     %h4 Lands
     %ul.list-unstyled
