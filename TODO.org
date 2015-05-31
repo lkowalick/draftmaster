@@ -1,3 +1,4 @@
+- Convert to multiverse ID
 - A better way to add cards with select 2
 - Group cards by name
 - Automatically associate dates/player names
