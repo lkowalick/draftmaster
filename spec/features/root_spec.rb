@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.feature 'Creating a deck and adding some cards' do
   before do
-    page.driver.browser.basic_authorize('covermymeds', 'draft2015')
+    login_as User.create!(email: 'fake@example.com', password: 'fakepass', password_confirmation: 'fakepass'), scope: :user
   end
 
   let(:deckname) { "deckname-#{SecureRandom.hex}" }
