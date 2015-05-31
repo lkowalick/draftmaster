@@ -84,4 +84,5 @@ ActiveRecord::Schema.define(version: 20150531200957) do
   add_foreign_key "card_decks", "decks"
   add_foreign_key "card_types", "cards"
   add_foreign_key "card_types", "types"
+  add_foreign_key "decks", "users"
 end
