@@ -1,3 +1,4 @@
+# Join model for putting cards in decks
 class CardDeck < ActiveRecord::Base
   belongs_to :deck
   belongs_to :card

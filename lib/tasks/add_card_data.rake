@@ -11,7 +11,8 @@ task add_card_data: :environment do
                                               image_name: card['imageName'])
 
         card['types'].each do |type_name|
-          CardType.create(card: card_record, type: Type.find_or_create_by!(name: type_name))
+          CardType.create(card: card_record,
+                          type: Type.find_or_create_by!(name: type_name))
         end
       end
     end

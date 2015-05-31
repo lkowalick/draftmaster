@@ -1,3 +1,4 @@
+# An abstraction of an MTG card
 class Card < ActiveRecord::Base
   validates :number, uniqueness: { scope: :set }
   validates :name, presence: true

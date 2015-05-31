@@ -1,3 +1,4 @@
+# Controller for RESTful actions on CardDecks
 class CardDecksController < ApplicationController
   def create
     card_deck = CardDeck.create(card_deck_params)
