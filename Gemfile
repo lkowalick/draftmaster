@@ -14,6 +14,8 @@ gem 'turbolinks'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'devise'
+
 gem 'puma'
 
 gem 'rails_12factor', group: :production
@@ -26,6 +28,10 @@ group :development, :test do
   gem 'capybara'
   gem 'shoulda-matchers'
   gem 'pry'
+end
+
+group :development do
+  gem 'rubocop'
 end
 
 ruby '2.2.2'
