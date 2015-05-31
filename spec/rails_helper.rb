@@ -14,7 +14,7 @@ RSpec.configure do |config|
 
   config.infer_spec_type_from_file_location!
 
-  #devise test setup
+  # devise test setup
   config.include Warden::Test::Helpers
 
   config.include Devise::TestHelpers, type: :controller

@@ -11,74 +11,73 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150531165539) do
-
+ActiveRecord::Schema.define(version: 20_150_531_165_539) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "plpgsql"
+  enable_extension 'plpgsql'
 
-  create_table "card_decks", force: :cascade do |t|
-    t.integer  "deck_id"
-    t.integer  "card_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'card_decks', force: :cascade do |t|
+    t.integer 'deck_id'
+    t.integer 'card_id'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  add_index "card_decks", ["card_id"], name: "index_card_decks_on_card_id", using: :btree
-  add_index "card_decks", ["deck_id"], name: "index_card_decks_on_deck_id", using: :btree
+  add_index 'card_decks', ['card_id'], name: 'index_card_decks_on_card_id', using: :btree
+  add_index 'card_decks', ['deck_id'], name: 'index_card_decks_on_deck_id', using: :btree
 
-  create_table "card_types", force: :cascade do |t|
-    t.integer "card_id"
-    t.integer "type_id"
+  create_table 'card_types', force: :cascade do |t|
+    t.integer 'card_id'
+    t.integer 'type_id'
   end
 
-  add_index "card_types", ["card_id"], name: "index_card_types_on_card_id", using: :btree
-  add_index "card_types", ["type_id"], name: "index_card_types_on_type_id", using: :btree
+  add_index 'card_types', ['card_id'], name: 'index_card_types_on_card_id', using: :btree
+  add_index 'card_types', ['type_id'], name: 'index_card_types_on_type_id', using: :btree
 
-  create_table "cards", force: :cascade do |t|
-    t.string   "set"
-    t.integer  "number"
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.string   "mana_cost"
-    t.integer  "cmc"
-    t.string   "image_name"
+  create_table 'cards', force: :cascade do |t|
+    t.string 'set'
+    t.integer 'number'
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
+    t.string 'mana_cost'
+    t.integer 'cmc'
+    t.string 'image_name'
   end
 
-  add_index "cards", ["number", "set"], name: "index_cards_on_number_and_set", unique: true, using: :btree
+  add_index 'cards', %w(number set), name: 'index_cards_on_number_and_set', unique: true, using: :btree
 
-  create_table "decks", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+  create_table 'decks', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at', null: false
+    t.datetime 'updated_at', null: false
   end
 
-  create_table "types", force: :cascade do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+  create_table 'types', force: :cascade do |t|
+    t.string 'name'
+    t.datetime 'created_at'
+    t.datetime 'updated_at'
   end
 
-  create_table "users", force: :cascade do |t|
-    t.string   "email",                  default: "", null: false
-    t.string   "encrypted_password",     default: "", null: false
-    t.string   "reset_password_token"
-    t.datetime "reset_password_sent_at"
-    t.datetime "remember_created_at"
-    t.integer  "sign_in_count",          default: 0,  null: false
-    t.datetime "current_sign_in_at"
-    t.datetime "last_sign_in_at"
-    t.inet     "current_sign_in_ip"
-    t.inet     "last_sign_in_ip"
-    t.datetime "created_at",                          null: false
-    t.datetime "updated_at",                          null: false
+  create_table 'users', force: :cascade do |t|
+    t.string 'email',                  default: '', null: false
+    t.string 'encrypted_password',     default: '', null: false
+    t.string 'reset_password_token'
+    t.datetime 'reset_password_sent_at'
+    t.datetime 'remember_created_at'
+    t.integer 'sign_in_count',          default: 0,  null: false
+    t.datetime 'current_sign_in_at'
+    t.datetime 'last_sign_in_at'
+    t.inet 'current_sign_in_ip'
+    t.inet 'last_sign_in_ip'
+    t.datetime 'created_at',                          null: false
+    t.datetime 'updated_at',                          null: false
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
+  add_index 'users', ['email'], name: 'index_users_on_email', unique: true, using: :btree
+  add_index 'users', ['reset_password_token'], name: 'index_users_on_reset_password_token', unique: true, using: :btree
 
-  add_foreign_key "card_decks", "cards"
-  add_foreign_key "card_decks", "decks"
-  add_foreign_key "card_types", "cards"
-  add_foreign_key "card_types", "types"
+  add_foreign_key 'card_decks', 'cards'
+  add_foreign_key 'card_decks', 'decks'
+  add_foreign_key 'card_types', 'cards'
+  add_foreign_key 'card_types', 'types'
 end
