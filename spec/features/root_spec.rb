@@ -44,4 +44,20 @@ RSpec.feature 'Creating a deck and adding some cards' do
 
     expect(page).to_not have_content 'Deck One'
   end
+
+  scenario 'Deck Access Control' do
+    visit '/'
+    fill_in 'deck_name', with: 'Deck One'
+    click_on 'Create Deck'
+
+    logout(:user)
+    login_as(User.create!(email: 'anotherfake@example.com',
+                          password: 'fakepass',
+                          password_confirmation: 'fakepass'),
+             scope: :user)
+    visit '/'
+
+    click_on 'Deck One'
+    expect(page).to_not have_button('Add Card')
+  end
 end
