@@ -1,0 +1,8 @@
+- if current_user.decks.include?(deck)
+  %tr
+    %td
+      = link_to deck.name, deck
+      = button_to "Delete #{deck.name}", deck, class: 'btn btn-danger', method: :delete
+- else
+  %tr
+    %td= link_to deck.name, edit_deck_path(deck)

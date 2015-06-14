@@ -50,7 +50,7 @@ RSpec.feature 'Creating a deck and adding some cards' do
     fill_in 'deck_name', with: 'Deck One'
     click_on 'Create Deck'
 
-    logout(:user)
+    click_on 'Logout'
     login_as(User.create!(email: 'anotherfake@example.com',
                           password: 'fakepass',
                           password_confirmation: 'fakepass'),

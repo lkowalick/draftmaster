@@ -10,11 +10,8 @@
 %table.table
   %tr
     %th Deck Name
-    %th Remove?
   - @decks.each do |deck|
-    %tr
-      %td= link_to deck.name, deck
-      %td= button_to "Delete #{deck.name}", deck, class: 'btn btn-danger', method: :delete
+    = render deck
 
 
 
