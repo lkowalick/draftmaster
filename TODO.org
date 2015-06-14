@@ -1,6 +1,6 @@
+- Pull out test data into factories (or seeds)
 - Convert to multiverse ID
 - A better way to add cards with select 2
 - Group cards by name
 - Automatically associate dates/player names
 - Clean up bootstrap layout stuff
-- Create Users and Authentication

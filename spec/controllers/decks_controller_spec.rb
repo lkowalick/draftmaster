@@ -1,8 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe DecksController, type: :controller do
-  describe 'POST #create' do
+  before do
+    @request.headers["Accept"] = "application/json"
+  end
 
+  describe 'POST #create' do
     context 'with good parameters' do
       let(:params) do
         { deck: { name: 'deck_name', user_id: user.id } }
@@ -36,7 +39,6 @@ RSpec.describe DecksController, type: :controller do
 
       it 'redirect me to the newly create deck' do
         sign_in user
-        @request.headers["Accept"] = "application/json"
         post :create, params
         expect(response).to be_successful
       end
@@ -56,14 +58,12 @@ RSpec.describe DecksController, type: :controller do
 
           it "doesn't let a user edit a different user's deck" do
             sign_in other_user
-            @request.headers["Accept"] = "application/json"
             patch :update, update_params
             expect(response).to be_forbidden
           end
 
           it "doesn't let a user edit a different user's deck" do
             sign_in other_user
-            @request.headers["Accept"] = "application/json"
             delete :destroy, destroy_params
             expect(response).to be_forbidden
           end
