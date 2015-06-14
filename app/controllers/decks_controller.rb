@@ -9,12 +9,21 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    redirect_to deck
+    respond_to do |format|
+      format.html { redirect_to deck }
+      format.json { render json: deck }
+    end
   end
 
   def update
     card = Card.find_by!(card_params)
-    deck = Deck.find(params[:id])
+    deck = current_user.decks.find_by(id: params[:id])
+
+    unless deck
+      head :forbidden
+      return
+    end
+
 
     if CardDeck.create(deck: deck, card: card)
       flash.notice = 'Card added.'
@@ -22,11 +31,19 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    redirect_to deck
+    respond_to do |format|
+      format.html { redirect_to deck }
+      format.json { render json: deck }
+    end
   end
 
   def destroy
-    deck = Deck.find(params[:id])
+    deck = current_user.decks.find_by(id: params[:id])
+
+    unless deck
+      head :forbidden
+      return
+    end
 
     if deck.destroy
       flash.notice = 'Deck Destroyed'
@@ -34,7 +51,10 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    redirect_to action: 'index'
+    respond_to do |format|
+      format.html { redirect_to action: 'index' }
+      format.json { render json: { success: true } }
+    end
   end
 
   def show
