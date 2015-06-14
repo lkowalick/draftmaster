@@ -1,4 +1,3 @@
-- Prevent editing of other user's decks
 - Convert to multiverse ID
 - A better way to add cards with select 2
 - Group cards by name

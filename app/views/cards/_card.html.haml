@@ -1,0 +1,6 @@
+%li
+  %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } } #{card.name} #{card.mana_cost}
+  - if current_user.decks.include?(deck)
+    = link_to("<span class='glyphicon glyphicon-remove'></span>".html_safe,
+              card_deck_path(CardDeck.find_by(deck: deck, card: card)),
+              method: :delete)

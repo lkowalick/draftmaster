@@ -2,7 +2,11 @@
   %tr
     %td
       = link_to deck.name, deck
-      = button_to "Delete #{deck.name}", deck, class: 'btn btn-danger', method: :delete
+      = button_to("Delete #{deck.name}",
+                  deck,
+                  class: 'btn btn-danger',
+                  method: :delete,
+                  data: { confirm: 'Are you sure?' })
 - else
   %tr
-    %td= link_to deck.name, edit_deck_path(deck)
+    %td= link_to deck.name, deck

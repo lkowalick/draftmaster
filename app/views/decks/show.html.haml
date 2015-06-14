@@ -1,38 +1,34 @@
 %h2
   = @deck.name
-.row
-  .col-md-4
-    = form_for @card, url: deck_path(@deck), html: { method: 'patch' } do |f|
-      .row
-        .col-xs-4
-          .form-group
-            = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
-        .col-xs-5
-          .form-group
-            = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."
-        .col-xs-3
-          = f.submit "Add Card", class: 'btn btn-default'
-  .col-md-8
-    .col-xs-2
-    - @land_card_decks.each do |card_deck|
+- if current_user.decks.include?(@deck)
+  .row
+    .col-md-4
+      = form_for @card, url: deck_path(@deck), html: { method: 'patch' } do |f|
+        .row
+          .col-xs-4
+            .form-group
+              = f.select :set, @sets, { selected: @most_recent_set }, class: 'form-control'
+          .col-xs-5
+            .form-group
+              = f.number_field :number, class: 'form-control', autofocus: "true", placeholder: "Card No."
+          .col-xs-3
+            = f.submit "Add Card", class: 'btn btn-default'
+    .col-md-8
       .col-xs-2
-        = form_for card_deck do |f|
-          = f.hidden_field :card_id
-          = f.hidden_field :deck_id
-          = f.button nil, class: 'btn btn-default btn-block' do
-            #{add_button} #{card_deck.card.name}
-
+      - @land_card_decks.each do |card_deck|
+        .col-xs-2
+          = form_for card_deck do |f|
+            = f.hidden_field :card_id
+            = f.hidden_field :deck_id
+            = f.button nil, class: 'btn btn-default btn-block' do
+              #{add_button} #{card_deck.card.name}
 
 .row
   .col-xs-4
     %h4 Creatures
     %ul.list-unstyled
       - @deck.cards.joins(:types).where(types: { name: 'Creature' }).each do |card|
-        %li
-          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
-            #{card.name} #{card.mana_cost}
-          - card_deck = CardDeck.find_by(deck: @deck, card: card)
-          = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete
+        = render partial: card, locals: {deck: @deck}
   .col-xs-4
     - ['Instant', 'Sorcery', 'Enchantment', 'Artifact', 'Planeswalker'].each do |type|
       - cards = @deck.cards.joins(:types).where(types: { name: type })
@@ -40,18 +36,9 @@
         %h4= type.pluralize
         %ul.list-unstyled
           - cards.each do |card|
-            %li
-              %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
-                #{card.name} #{card.mana_cost}
-              - card_deck = CardDeck.find_by(deck: @deck, card: card)
-              = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete
-  .col-xs-4
+            = render partial: card, locals: {deck: @deck}
   .col-xs-4
     %h4 Lands
     %ul.list-unstyled
       - @deck.cards.joins(:types).where(types: { name: 'Land' }).each do |card|
-        %li
-          %a{tabindex: "0", data: { toggle: "popover", trigger: "hover", content: image_tag("#{card.image_name}.jpg"), html: "true" } }
-            #{card.name} #{card.mana_cost}
-          - card_deck = CardDeck.find_by(deck: @deck, card: card)
-          = link_to "<span class='glyphicon glyphicon-remove'></span>".html_safe, card_deck_path(card_deck), method: :delete
+        = render partial: card, locals: {deck: @deck}
