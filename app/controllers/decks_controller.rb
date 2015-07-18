@@ -73,6 +73,7 @@ class DecksController < ApplicationController
 
   def index
     @deck = Deck.new
+    @draft = Draft.new
     @decks = Deck.all
   end
 

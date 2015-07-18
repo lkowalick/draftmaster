@@ -1,2 +1,8 @@
-%h1 Drafts#new
-%p Find me in app/views/drafts/new.html.haml
+Players
+= form_for @draft do |f|
+  = hidden_field_tag "draft[user_ids][]"
+  - @users.all.each do |user|
+    = check_box_tag("draft[user_ids][]",
+                    user.id,
+                    @draft.users.include?(user),
+                    id: "draft_user_ids_#{user.id}")

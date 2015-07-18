@@ -6,9 +6,10 @@ RSpec.feature 'Creating a deck and adding some cards' do
              scope: :user)
   end
 
-  scenario 'Create a new draft and add players to it', focus: true do
+  scenario 'Create a new draft and add players to it' do
     visit '/'
     click_on 'Create Draft'
+    expect(page).to have_content 'Add Player'
   end
 
   scenario 'View and edit decks at root' do

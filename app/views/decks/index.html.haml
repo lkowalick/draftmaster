@@ -1,8 +1,7 @@
 = form_for @draft do |f|
   .row
     .col-xs-1
-      = f.hidden_field :owner_id, value: current_user.id
-      = f.submit "Create Draft", class: 'btn btn-default'
+      = link_to "Create Draft", new_draft_path, class: 'btn btn-default'
 
 = form_for @deck, url: {action: "create"} do |f|
   .row

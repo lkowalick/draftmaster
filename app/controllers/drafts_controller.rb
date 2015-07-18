@@ -9,6 +9,8 @@ class DraftsController < ApplicationController
   end
 
   def new
+    @draft = Draft.new
+    @users = User.all
   end
 
   def update
