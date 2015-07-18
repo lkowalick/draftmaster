@@ -2,53 +2,14 @@ require 'rails_helper'
 
 RSpec.feature 'Creating a deck and adding some cards' do
   before do
-    login_as(User.create!(email: 'fake@example.com',
-                          password: 'fakepass',
-                          password_confirmation: 'fakepass'),
+    login_as(User.find_by!(email: 'test@example.com'),
              scope: :user)
   end
 
   let(:deckname) { "deckname-#{SecureRandom.hex}" }
-  let(:set_1) { "set_1-#{SecureRandom.hex}" }
-  let(:set_2) { "set_2-#{SecureRandom.hex}" }
-  let(:type) { Type.find_or_create_by!(name: 'Land') }
 
-  let!(:card) do
-    card = Card.where(mana_cost: '1UG',
-                      name: "card-#{SecureRandom.hex}",
-                      number: 1,
-                      cmc: 1,
-                      set: set_1).first_or_create!
-
-    CardType.create!(card: card, type: type)
-
-    card
-  end
-
-  %i(swamp plains island mountain forest).each_with_index do |land, i|
-    let!(land) do
-      card = Card.where(mana_cost: '',
-                        name: land.to_s.titleize,
-                        number: 101 + i,
-                        cmc: 0,
-                        set: set_2).first_or_create!
-
-      CardType.create!(card: card, type: type)
-
-      card
-    end
-  end
-
-  let!(:other_card) do
-    card = Card.where(name: "other_card-#{SecureRandom.hex}",
-                      number: 2,
-                      cmc: 2,
-                      mana_cost: '2GB',
-                      set: set_2).first_or_create!
-
-    CardType.create!(card: card, type: type)
-
-    card
+  let(:card) do
+    Card.first
   end
 
   scenario 'Create a deck, add a card, then remove a card' do

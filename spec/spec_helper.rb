@@ -18,5 +18,9 @@ RSpec.configure do |config|
 
   config.order = :random
 
+  config.before(:suite) do
+    Rails.application.load_seed
+  end
+
   Kernel.srand config.seed
 end

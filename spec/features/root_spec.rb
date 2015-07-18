@@ -2,27 +2,13 @@ require 'rails_helper'
 
 RSpec.feature 'Creating a deck and adding some cards' do
   before do
-    login_as(User.create!(email: 'fake@example.com',
-                          password: 'fakepass',
-                          password_confirmation: 'fakepass'),
+    login_as(User.find_by!(email: 'test@example.com'),
              scope: :user)
   end
 
-  let(:deckname) { "deckname-#{SecureRandom.hex}" }
-  let(:set) { "set-#{SecureRandom.hex}" }
-  let(:type) { Type.find_or_create_by!(name: 'Land') }
-  %i(swamp plains island mountain forest).each_with_index do |land, i|
-    let!(land) do
-      card = Card.where(mana_cost: '',
-                        name: land.to_s.titleize,
-                        number: 101 + i,
-                        cmc: 0,
-                        set: set).first_or_create!
-
-      CardType.create!(card: card, type: type)
-
-      card
-    end
+  scenario 'Create a new draft and add players to it', focus: true do
+    visit '/'
+    click_on 'Create Draft'
   end
 
   scenario 'View and edit decks at root' do
