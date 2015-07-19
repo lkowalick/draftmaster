@@ -1,0 +1,15 @@
+.row
+  .col-xs-4.col-xs-offset-4
+    %table.table
+      %tr
+        %th Player
+        %th 1st Rnd
+        %th 2nd Rnd
+        %th 3rd Rnd
+      - 1.upto(8).each do |index|
+        - if @draft.send("player_#{index}").present?
+          %tr
+            %td= @draft.send("player_#{index}")
+            %td 2-0
+            %td 2-1
+            %td 2-0

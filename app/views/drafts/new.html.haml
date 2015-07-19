@@ -1,8 +1,9 @@
-Players
-= form_for @draft do |f|
-  = hidden_field_tag "draft[user_ids][]"
-  - @users.all.each do |user|
-    = check_box_tag("draft[user_ids][]",
-                    user.id,
-                    @draft.users.include?(user),
-                    id: "draft_user_ids_#{user.id}")
+.row
+  .col-xs-4.col-xs-offset-4
+    %h3 Players
+    = form_for @draft do |f|
+      - 1.upto(8).each do |index|
+        .form-group
+          = f.label "player_#{index}"
+          = f.text_field "player_#{index}", class: 'form-control'
+      = f.submit class: 'btn btn-default'

@@ -9,7 +9,19 @@ RSpec.feature 'Creating a deck and adding some cards' do
   scenario 'Create a new draft and add players to it' do
     visit '/'
     click_on 'Create Draft'
-    expect(page).to have_content 'Add Player'
+
+    expect(page).to have_content 'Players'
+
+    fill_in 'draft_player_1', with: 'Player One'
+    fill_in 'draft_player_2', with: 'Player Two'
+    fill_in 'draft_player_3', with: 'Player Three'
+    fill_in 'draft_player_4', with: 'Player Four'
+
+    click_on 'Create Draft'
+
+
+    expect(page).to have_content 'Player One'
+    expect(page).to have_content 'Player Three'
   end
 
   scenario 'View and edit decks at root' do
