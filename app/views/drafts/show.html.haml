@@ -6,10 +6,9 @@
         %th 1st Rnd
         %th 2nd Rnd
         %th 3rd Rnd
-      - 1.upto(8).each do |index|
-        - if @draft.send("player_#{index}").present?
-          %tr
-            %td= @draft.send("player_#{index}")
-            %td 2-0
-            %td 2-1
-            %td 2-0
+      - @draft.players.each do |player|
+        %tr
+          %td= player.name
+          %td= "#{player.first_round_wins}-#{player.first_round_losses}"
+          %td= "#{player.second_round_wins}-#{player.second_round_losses}"
+          %td= "#{player.third_round_wins}-#{player.third_round_losses}"

@@ -1,7 +1,8 @@
-= form_for @draft do |f|
-  .row
-    .col-xs-1
-      = link_to "Create Draft", new_draft_path, class: 'btn btn-default'
+.row
+  .col-xs-1.col-xs-offset-1
+    .form-group
+      = form_for @draft do |f|
+        = link_to "Create Draft", new_draft_path, class: 'btn btn-default'
 
 = form_for @deck, url: {action: "create"} do |f|
   .row

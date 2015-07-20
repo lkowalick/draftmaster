@@ -1,3 +1,4 @@
 class Draft < ActiveRecord::Base
-  has_many :users
+  has_many :players
+  accepts_nested_attributes_for :players, reject_if: :all_blank
 end

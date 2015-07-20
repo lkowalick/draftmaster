@@ -19,7 +19,7 @@ class DraftsController < ApplicationController
 
   def new
     @draft = Draft.new
-    @users = User.all
+    8.times { @draft.players << Player.new }
   end
 
   def update
@@ -32,16 +32,6 @@ class DraftsController < ApplicationController
   private
 
   def draft_params
-    params
-    .require(:draft)
-    .permit(:player_1,
-            :player_2,
-            :player_3,
-            :player_4,
-            :player_5,
-            :player_6,
-            :player_7,
-            :player_8)
-    .select { |k, v| v.present? }
+    params.require(:draft).permit(players_attributes: [:name])
   end
 end

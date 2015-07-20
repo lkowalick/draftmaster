@@ -2,8 +2,8 @@
   .col-xs-4.col-xs-offset-4
     %h3 Players
     = form_for @draft do |f|
-      - 1.upto(8).each do |index|
+      = f.fields_for :players do |p|
         .form-group
-          = f.label "player_#{index}"
-          = f.text_field "player_#{index}", class: 'form-control'
+          = p.label "name"
+          = p.text_field "name", class: 'form-control'
       = f.submit class: 'btn btn-default'
