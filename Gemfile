@@ -27,6 +27,7 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'capybara'
   gem 'shoulda-matchers'
+  gem 'shoulda-callback-matchers'
   gem 'pry'
 end
 

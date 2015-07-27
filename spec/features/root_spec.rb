@@ -33,6 +33,8 @@ RSpec.feature 'Creating a deck and adding some cards' do
     expect(page).to have_content 'Player Eight'
 
     click_on 'Pair Round One'
+
+    expect(page).to have_content 'Round 1 Matches'
   end
 
   scenario 'View and edit decks at root' do

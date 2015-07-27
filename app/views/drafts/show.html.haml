@@ -12,3 +12,7 @@
           %td= "#{player.first_round_wins}-#{player.first_round_losses}"
           %td= "#{player.second_round_wins}-#{player.second_round_losses}"
           %td= "#{player.third_round_wins}-#{player.third_round_losses}"
+.row
+  .col-xs-1.col-xs-offset-4
+    = form_for @round, url: draft_rounds_path(@draft) do |f|
+      = f.submit 'Pair Round One', class: 'btn btn-default'

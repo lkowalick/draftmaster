@@ -27,6 +27,7 @@ class DraftsController < ApplicationController
 
   def show
     @draft = Draft.find(params[:id])
+    @round = Round.new
   end
 
   private

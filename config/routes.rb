@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
-  resources :drafts
+  resources :drafts do
+    resources :rounds, only: [:create]
+  end
+
+  resources :rounds, only: [:show]
 
   devise_for :users
   root 'decks#index'
