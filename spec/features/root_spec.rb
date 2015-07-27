@@ -12,10 +12,10 @@ RSpec.feature 'Creating a deck and adding some cards' do
 
     expect(page).to have_content 'Players'
 
-    fill_in 'draft_player_1', with: 'Player One'
-    fill_in 'draft_player_2', with: 'Player Two'
-    fill_in 'draft_player_3', with: 'Player Three'
-    fill_in 'draft_player_4', with: 'Player Four'
+    fill_in 'draft_players_attributes_0_name', with: 'Player One'
+    fill_in 'draft_players_attributes_1_name', with: 'Player Two'
+    fill_in 'draft_players_attributes_2_name', with: 'Player Three'
+    fill_in 'draft_players_attributes_3_name', with: 'Player Four'
 
     click_on 'Create Draft'
 
