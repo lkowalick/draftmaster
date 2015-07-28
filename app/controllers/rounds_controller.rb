@@ -1,6 +1,6 @@
 class RoundsController < ApplicationController
   def create
-    @round = Draft.find(params[:draft_id]).rounds.build
+    @round = RoundFactory.build(Draft.find(params[:draft_id]))
     if @round.save
       redirect_to @round
     else

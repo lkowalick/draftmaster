@@ -15,4 +15,4 @@
 .row
   .col-xs-1.col-xs-offset-4
     = form_for @round, url: draft_rounds_path(@draft) do |f|
-      = f.submit 'Pair Round One', class: 'btn btn-default'
+      = f.submit "Pair #{next_round_ordinal(@draft)} Round", class: 'btn btn-default'
