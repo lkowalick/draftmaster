@@ -4,6 +4,7 @@ RSpec.feature 'Creating a deck and adding some cards' do
   before do
     login_as(User.find_by!(email: 'test@example.com'),
              scope: :user)
+    srand(1234)
   end
 
   scenario 'Create a new draft and add players to it' do

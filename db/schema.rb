@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150727004317) do
+ActiveRecord::Schema.define(version: 20150728014054) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,8 @@ ActiveRecord::Schema.define(version: 20150727004317) do
     t.integer "draft_id"
     t.integer "round"
     t.integer "round_id"
+    t.integer "player_one_id"
+    t.integer "player_two_id"
   end
 
   add_index "matches", ["draft_id"], name: "index_matches_on_draft_id", using: :btree
@@ -78,11 +80,9 @@ ActiveRecord::Schema.define(version: 20150727004317) do
     t.integer "second_round_losses"
     t.integer "third_round_wins"
     t.integer "third_round_losses"
-    t.integer "match_id"
   end
 
   add_index "players", ["draft_id"], name: "index_players_on_draft_id", using: :btree
-  add_index "players", ["match_id"], name: "index_players_on_match_id", using: :btree
 
   create_table "rounds", force: :cascade do |t|
     t.integer "draft_id"
@@ -123,9 +123,10 @@ ActiveRecord::Schema.define(version: 20150727004317) do
   add_foreign_key "card_types", "types"
   add_foreign_key "decks", "users"
   add_foreign_key "matches", "drafts"
+  add_foreign_key "matches", "players", column: "player_one_id"
+  add_foreign_key "matches", "players", column: "player_two_id"
   add_foreign_key "matches", "rounds"
   add_foreign_key "players", "drafts"
-  add_foreign_key "players", "matches"
   add_foreign_key "rounds", "drafts"
   add_foreign_key "users", "drafts"
 end
