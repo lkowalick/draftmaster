@@ -14,12 +14,7 @@ class DecksController < ApplicationController
 
   def update
     card = Card.find_by!(card_params)
-    deck = current_user.decks.find_by(id: params[:id])
-
-    unless deck
-      head :forbidden
-      return
-    end
+    deck = current_user.decks.find_by!(id: params[:id])
 
     if CardDeck.create(deck: deck, card: card)
       flash.notice = 'Card added.'
@@ -31,12 +26,7 @@ class DecksController < ApplicationController
   end
 
   def destroy
-    deck = current_user.decks.find_by(id: params[:id])
-
-    unless deck
-      head :forbidden
-      return
-    end
+    deck = current_user.decks.find_by!(id: params[:id])
 
     if deck.destroy
       flash.notice = 'Deck Destroyed'

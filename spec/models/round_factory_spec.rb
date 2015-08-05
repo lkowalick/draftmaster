@@ -47,8 +47,12 @@ RSpec.describe RoundFactory do
         srand 1234
       end
 
+      let(:pairs) do
+        subject.matches.map { |m| [m.player_one.name, m.player_two.name] }
+      end
+
       it 'should pair all players randomly' do
-        expect(subject.matches.map { |m| [m.player_one.name, m.player_two.name] }).to(
+        expect(pairs).to(
           eq([['Player 2', 'Player 1'],
               ['Player 6', 'Player 0'],
               ['Player 4', 'Player 5'],
