@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150728014054) do
+ActiveRecord::Schema.define(version: 20150805023954) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -62,7 +62,6 @@ ActiveRecord::Schema.define(version: 20150728014054) do
 
   create_table "matches", force: :cascade do |t|
     t.integer "draft_id"
-    t.integer "round"
     t.integer "round_id"
     t.integer "player_one_id"
     t.integer "player_two_id"
