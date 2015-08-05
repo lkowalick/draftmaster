@@ -4,3 +4,6 @@ AllCops:
     - db/**/*
     - bin/**/*
   RunRailsCops: true
+
+Documentation:
+  Enabled: false

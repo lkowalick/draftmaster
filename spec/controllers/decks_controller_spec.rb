@@ -2,7 +2,7 @@ require 'rails_helper'
 
 RSpec.describe DecksController, type: :controller do
   before do
-    @request.headers["Accept"] = "application/json"
+    @request.headers['Accept'] = 'application/json'
   end
 
   describe 'POST #create' do
@@ -28,9 +28,9 @@ RSpec.describe DecksController, type: :controller do
       let!(:card) do
         card = Card.where(mana_cost: '1UG',
                           name: "card-#{SecureRandom.hex}",
-        number: 1,
-          cmc: 1,
-          set: 'set_1').first_or_create!
+                          number: 1,
+                          cmc: 1,
+                          set: 'set_1').first_or_create!
 
         CardType.create!(card: card, type: type)
 

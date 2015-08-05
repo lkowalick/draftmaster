@@ -24,7 +24,6 @@ class DecksController < ApplicationController
       return
     end
 
-
     if CardDeck.create(deck: deck, card: card)
       flash.notice = 'Card added.'
     else
