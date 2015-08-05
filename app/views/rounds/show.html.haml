@@ -1,8 +1,9 @@
 %h3= "Round #{@round.number} Matches"
 
-- @round.matches.includes(:players).each_with_index do |match, i|
+- @round.matches.includes(:player_one, :player_two).each_with_index do |match, i|
   %h4= "Match #{i + 1}"
   .row
-    - match.players.each do |player|
-      .col-xs-1
-        = player.name
+    .col-xs-1
+      = match.player_one.name
+    .col-xs-1
+      = match.player_two.name

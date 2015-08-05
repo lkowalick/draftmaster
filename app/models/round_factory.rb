@@ -3,7 +3,7 @@ class RoundFactory
     new(draft).send(:build)
   end
 
-  private 
+  private
 
   attr_reader :draft
 
