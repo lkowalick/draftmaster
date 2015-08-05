@@ -9,10 +9,7 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    respond_to do |format|
-      format.html { redirect_to deck }
-      format.json { render json: deck }
-    end
+    redirect_to deck
   end
 
   def update
@@ -30,10 +27,7 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    respond_to do |format|
-      format.html { redirect_to deck }
-      format.json { render json: deck }
-    end
+    redirect_to deck
   end
 
   def destroy
@@ -50,10 +44,7 @@ class DecksController < ApplicationController
       flash.alert = 'Something went wrong.'
     end
 
-    respond_to do |format|
-      format.html { redirect_to action: 'index' }
-      format.json { render json: { success: true } }
-    end
+    redirect_to action: 'index'
   end
 
   def show

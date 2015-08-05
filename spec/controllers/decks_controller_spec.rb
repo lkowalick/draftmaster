@@ -1,10 +1,6 @@
 require 'rails_helper'
 
 RSpec.describe DecksController, type: :controller do
-  before do
-    @request.headers['Accept'] = 'application/json'
-  end
-
   describe 'POST #create' do
     context 'with good parameters' do
       let(:params) do
@@ -37,10 +33,14 @@ RSpec.describe DecksController, type: :controller do
         card
       end
 
-      it 'redirect me to the newly create deck' do
+      before do
         sign_in user
-        post :create, params
-        expect(response).to be_successful
+      end
+
+      subject { post :create, params }
+
+      it 'redirect me to the newly create deck' do
+        expect(subject).to redirect_to(%r(/decks/\d+))
       end
 
       describe 'deck access control' do
