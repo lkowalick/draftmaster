@@ -1,9 +1,11 @@
 .row
-  .col-xs-4.col-xs-offset-4
+  .col-xs-6.col-xs-offset-3
     %h3 Players
+    .row
     = form_for @draft do |f|
       = f.fields_for :players do |p|
-        .form-group
-          = p.label "name"
-          = p.text_field "name", class: 'form-control'
-      = f.submit class: 'btn btn-default'
+        .col-xs-6
+          .form-group
+            = p.label "name", class: 'sr-only'
+            = p.text_field "name", class: 'form-control'
+      = f.submit class: 'btn btn-primary pull-right'

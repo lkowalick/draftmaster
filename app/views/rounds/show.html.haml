@@ -1,9 +1,15 @@
-%h3= "Round #{@round.number} Matches"
+%h2= "Round #{@round.number}"
 
-- @round.matches.includes(:player_one, :player_two).each_with_index do |match, i|
-  %h4= "Match #{i + 1}"
-  .row
-    .col-xs-1
-      = match.player_one.name
-    .col-xs-1
-      = match.player_two.name
+.row
+  .col-xs-offset-2.col-xs-8
+    #accordian.panel-group{ role: 'tablist', 'aria-multiselectable' => 'true' }
+      - @round.matches.includes(:player_one, :player_two).each do |match|
+        .panel.panel-default
+          .panel-heading{ id: "heading_#{match.id}", role: 'tab' }
+            %h4.panel-title
+              %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
+                %span.glyphicon.glyphicon-chevron-right
+                = "#{match.player_one.name} vs. #{match.player_two.name}"
+          .panel-collapse.collapse.in{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
+            .panel-body
+              = render match
