@@ -10,6 +10,6 @@
               %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
                 %span.glyphicon.glyphicon-chevron-right
                 = "#{match.player_one.name} vs. #{match.player_two.name}"
-          .panel-collapse.collapse.in{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
+          .panel-collapse.collapse{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
             .panel-body
               = render match
