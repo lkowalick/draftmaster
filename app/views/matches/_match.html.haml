@@ -1,20 +1,25 @@
-.panel.panel-primary
+.panel{ class: "panel-#{match.completed ? 'default' : 'primary' }" }
   .panel-heading{ id: "heading_#{match.id}", role: 'tab' }
     %h4.panel-title
       %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
         %span.glyphicon.glyphicon-chevron-right
         = "#{match.player_one.name} vs. #{match.player_two.name}"
-      .pull-right In Progress
+      .pull-right
+        - if match.completed
+          = "#{match.player_one_wins}-#{match.player_two_wins}"
+        - else
+          In Progress
   .panel-collapse.collapse{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
     .panel-body
-      %form.form-inline
+      = form_for match, html: { class: 'form-inline' } do |f|
+        = f.hidden_field 'completed', value: 'true'
         .form-group{ style: 'margin-right: 10px;' }
-          %label{ for: 'exampleInputAmount' } Bill Wins
-          %input.form-control{ type: 'number', id: 'exampleInputAmount', value: '0', style: 'width: 80px;' }
+          = f.label 'player_one_wins', "#{match.player_one.name} Wins"
+          = f.number_field 'player_one_wins', class: 'form-control', value: '0', style: 'width: 80px;'
         .form-group{ style: 'margin-right: 10px;' }
-          %label{ for: 'exampleInputAmount1' } Steve Wins
-          %input.form-control{ type: 'number', id: 'exampleInputAmount1', value: '0', style: 'width: 80px;' }
+          = f.label 'player_two_wins', "#{match.player_two.name} Wins"
+          = f.number_field 'player_two_wins', class: 'form-control', value: '0', style: 'width: 80px;'
         .form-group{ style: 'margin-right: 10px;' }
-          %label{ for: 'exampleInputAmount2' } Draws
-          %input.form-control{ type: 'number', id: 'exampleInputAmount2', value: '0', style: 'width: 80px;' }
-        %button.btn.btn-primary{ type: 'submit' } Enter Results
+          = f.label 'draws'
+          = f.number_field 'draws', class: 'form-control', value: '0', style: 'width: 80px;'
+        = f.submit 'Enter Result', class: 'btn btn-primary'
