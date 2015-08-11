@@ -4,6 +4,7 @@
       %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
         %span.glyphicon.glyphicon-chevron-right
         = "#{match.player_one.name} vs. #{match.player_two.name}"
+      .pull-right In Progress
   .panel-collapse.collapse{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
     .panel-body
       %form.form-inline
@@ -16,4 +17,4 @@
         .form-group{ style: 'margin-right: 10px;' }
           %label{ for: 'exampleInputAmount2' } Draws
           %input.form-control{ type: 'number', id: 'exampleInputAmount2', value: '0', style: 'width: 80px;' }
-        %button.btn.btn-primary{ type: 'submit' } Enter Result
+        %button.btn.btn-primary{ type: 'submit' } Enter Results
