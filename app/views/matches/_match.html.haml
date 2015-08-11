@@ -1,4 +1,4 @@
-.panel.panel-default
+.panel.panel-primary
   .panel-heading{ id: "heading_#{match.id}", role: 'tab' }
     %h4.panel-title
       %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
@@ -6,4 +6,14 @@
         = "#{match.player_one.name} vs. #{match.player_two.name}"
   .panel-collapse.collapse{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
     .panel-body
-      = match
+      %form.form-inline
+        .form-group{ style: 'margin-right: 10px;' }
+          %label{ for: 'exampleInputAmount' } Bill Wins
+          %input.form-control{ type: 'number', id: 'exampleInputAmount', value: '0', style: 'width: 80px;' }
+        .form-group{ style: 'margin-right: 10px;' }
+          %label{ for: 'exampleInputAmount1' } Steve Wins
+          %input.form-control{ type: 'number', id: 'exampleInputAmount1', value: '0', style: 'width: 80px;' }
+        .form-group{ style: 'margin-right: 10px;' }
+          %label{ for: 'exampleInputAmount2' } Draws
+          %input.form-control{ type: 'number', id: 'exampleInputAmount2', value: '0', style: 'width: 80px;' }
+        %button.btn.btn-primary{ type: 'submit' } Enter Result
