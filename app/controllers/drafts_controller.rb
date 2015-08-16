@@ -4,7 +4,7 @@ class DraftsController < ApplicationController
 
     if @draft.save
       flash.notice = 'Draft created'
-      redirect_to @draft
+      redirect_to @draft.rounds.first
     else
       flash.alert = 'We could not create the draft'
       redirect_to root_path

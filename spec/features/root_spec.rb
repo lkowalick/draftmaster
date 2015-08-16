@@ -22,21 +22,11 @@ RSpec.feature 'Creating a deck and adding some cards' do
     fill_in 'draft_players_attributes_6_name', with: 'Player Seven'
     fill_in 'draft_players_attributes_7_name', with: 'Player Eight'
 
-    click_on 'Create Draft'
-
-    expect(page).to have_content 'Player One'
-    expect(page).to have_content 'Player Two'
-    expect(page).to have_content 'Player Three'
-    expect(page).to have_content 'Player Four'
-    expect(page).to have_content 'Player Five'
-    expect(page).to have_content 'Player Six'
-    expect(page).to have_content 'Player Seven'
-    expect(page).to have_content 'Player Eight'
-
     click_on 'Pair 1st Round'
 
     expect(page).to have_content 'Round 1'
 
+    expect(page).to have_content 'vs.'
     expect(page).to have_content 'Player One'
     expect(page).to have_content 'Player Two'
     expect(page).to have_content 'Player Three'
