@@ -15,11 +15,11 @@
         = f.hidden_field 'completed', value: 'true'
         .form-group{ style: 'margin-right: 10px;' }
           = f.label 'player_one_wins', "#{match.player_one.name} Wins"
-          = f.number_field 'player_one_wins', class: 'form-control', style: 'width: 80px;'
+          = f.number_field 'player_one_wins', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
         .form-group{ style: 'margin-right: 10px;' }
           = f.label 'player_two_wins', "#{match.player_two.name} Wins"
-          = f.number_field 'player_two_wins', class: 'form-control', style: 'width: 80px;'
+          = f.number_field 'player_two_wins', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
         .form-group{ style: 'margin-right: 10px;' }
           = f.label 'draws'
-          = f.number_field 'draws', class: 'form-control', style: 'width: 80px;'
+          = f.number_field 'draws', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
         = f.submit 'Update Results', class: 'btn btn-primary'
