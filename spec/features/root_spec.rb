@@ -35,7 +35,7 @@ RSpec.feature 'Creating a deck and adding some cards' do
 
     click_on 'Pair 1st Round'
 
-    expect(page).to have_content 'Round 1 Matches'
+    expect(page).to have_content 'Round 1'
 
     expect(page).to have_content 'Player One'
     expect(page).to have_content 'Player Two'

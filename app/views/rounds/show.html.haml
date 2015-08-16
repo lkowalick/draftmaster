@@ -3,5 +3,10 @@
 .row
   .col-xs-offset-2.col-xs-8
     #accordian.panel-group{ role: 'tablist', 'aria-multiselectable' => 'true' }
-      - @round.matches.includes(:player_one, :player_two).each do |match|
+      - @round.matches.order(:id).includes(:player_one, :player_two).each do |match|
         = render match
+.row
+  .col-xs-offset-2.col-xs-8
+    - if @round.complete
+      = form_for @next_round, url: draft_rounds_path(@round.draft) do |f|
+        = f.submit "Pair #{next_round_ordinal(@round.draft)} Round", class: 'btn btn-default pull-right'
