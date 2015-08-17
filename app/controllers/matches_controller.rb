@@ -6,6 +6,7 @@ class MatchesController < ApplicationController
       flash[:notice] = 'Match results entered'
     else
       flash[:alert] = 'There was a problem entering match results'
+      # TODO: Use the form-field highlighting to give better errors
     end
     redirect_to @match.round
   end
