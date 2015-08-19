@@ -1,14 +1,24 @@
 class MatchesController < ApplicationController
+  helper MatchesHelper
+
   def update
     @match = Match.find(params[:id])
 
-    if @match.update_attributes(match_params)
-      flash[:notice] = 'Match results entered'
-    else
-      flash[:alert] = 'There was a problem entering match results'
-      # TODO: Use the form-field highlighting to give better errors
+    respond_to do |format|
+      if @match.update_attributes(match_params)
+        format.html do
+          redirect_to @match.round,
+                      notice: 'Match results entered'
+        end
+        format.js {}
+      else
+        flash[:alert] = 'There was a problem entering match results'
+        format.html do
+          redirect_to @match.round,
+                      alert: 'There was a problem entering match results'
+        end
+      end
     end
-    redirect_to @match.round
   end
 
   private
