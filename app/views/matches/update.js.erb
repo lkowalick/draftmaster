@@ -1,0 +1,2 @@
+$("#match_<%= @match.id %>_stats").text("<%= stats_for(@match) %>")
+$("#match_<%= @match.id %>_panel").removeClass("<%= panel_classes %>").addClass("<%= panel_class_for(@match) %>")

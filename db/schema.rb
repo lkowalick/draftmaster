@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150805023954) do
+ActiveRecord::Schema.define(version: 20150811024908) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -65,6 +65,10 @@ ActiveRecord::Schema.define(version: 20150805023954) do
     t.integer "round_id"
     t.integer "player_one_id"
     t.integer "player_two_id"
+    t.boolean "completed"
+    t.integer "player_one_wins"
+    t.integer "player_two_wins"
+    t.integer "draws"
   end
 
   add_index "matches", ["draft_id"], name: "index_matches_on_draft_id", using: :btree

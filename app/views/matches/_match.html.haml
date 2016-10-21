@@ -1,0 +1,22 @@
+.panel{ class: panel_class_for(match), id: "match_#{match.id}_panel" }
+  .panel-heading{ id: "heading_#{match.id}", role: 'tab' }
+    %h4.panel-title
+      %a{ href: "#collapse_#{match.id}", role: 'button', 'aria-expanded' => 'true', 'aria-controls' => 'true', data: { toggle: 'collapse', parent: '#accordian' } }
+        %span.glyphicon.glyphicon-chevron-right
+        = "#{match.player_one.name} vs. #{match.player_two.name}"
+      .pull-right{ id: "match_#{match.id}_stats" }
+        = stats_for(match)
+  .panel-collapse.collapse{ id: "collapse_#{match.id}", role: 'tabpanel', 'aria-labelledby' => "heading_#{match.id}" }
+    .panel-body
+      = form_for match, remote: true, html: { class: 'form-inline' } do |f|
+        = f.hidden_field 'completed', value: 'true'
+        .form-group{ style: 'margin-right: 10px;' }
+          = f.label 'player_one_wins', "#{match.player_one.name} Wins"
+          = f.number_field 'player_one_wins', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
+        .form-group{ style: 'margin-right: 10px;' }
+          = f.label 'player_two_wins', "#{match.player_two.name} Wins"
+          = f.number_field 'player_two_wins', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
+        .form-group{ style: 'margin-right: 10px;' }
+          = f.label 'draws'
+          = f.number_field 'draws', class: 'form-control', style: 'width: 80px;', min: 0, max: 2
+        = f.submit 'Update Results', class: 'btn btn-primary'

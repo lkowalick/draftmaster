@@ -9,5 +9,6 @@ Rails.application.routes.draw do
   root 'decks#index'
 
   resources :decks
+  resources :matches, only: [:create,:update]
   resources :card_decks
 end

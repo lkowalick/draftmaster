@@ -20,6 +20,7 @@ class RoundsController < ApplicationController
 
   def show
     @round = Round.find(params[:id])
+    @next_round = Round.new
   end
 
   def index
