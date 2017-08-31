@@ -12,6 +12,7 @@ class AddNonnullableUserIdToDeck < ActiveRecord::Migration
   end
 
   class MigrationDeck < ActiveRecord::Base
+    belongs_to :user
     self.table_name = 'decks'
   end
 end
