@@ -1,5 +1,5 @@
 # An abstraction of an MTG deck
-class Deck < ActiveRecord::Base
+class Deck < ApplicationRecord
   has_many :card_decks, dependent: :destroy
   has_many :cards, through: :card_decks
   belongs_to :user

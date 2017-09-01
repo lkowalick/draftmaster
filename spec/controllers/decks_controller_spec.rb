@@ -37,7 +37,7 @@ RSpec.describe DecksController, type: :controller do
         sign_in user
       end
 
-      subject { post :create, params }
+      subject { post :create, params: params }
 
       it 'redirect me to the newly create deck' do
         expect(subject).to redirect_to(%r{/decks/\d+})
@@ -58,13 +58,13 @@ RSpec.describe DecksController, type: :controller do
 
           it "doesn't let a user edit a different user's deck" do
             sign_in other_user
-            expect { patch :update, update_params }
+            expect { patch :update, params: update_params }
             .to(raise_error(ActiveRecord::RecordNotFound))
           end
 
           it "doesn't let a user edit a different user's deck" do
             sign_in other_user
-            expect { delete :destroy, destroy_params }
+            expect { delete :destroy, params: destroy_params }
             .to(raise_error(ActiveRecord::RecordNotFound))
           end
         end

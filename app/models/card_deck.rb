@@ -1,5 +1,5 @@
 # Join model for putting cards in decks
-class CardDeck < ActiveRecord::Base
+class CardDeck < ApplicationRecord
   belongs_to :deck
   belongs_to :card
 

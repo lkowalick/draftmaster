@@ -1,5 +1,5 @@
 # An abstraction of an MTG card
-class Card < ActiveRecord::Base
+class Card < ApplicationRecord
   validates :number, uniqueness: { scope: :set }
   validates :name, presence: true
   validates :set, presence: true

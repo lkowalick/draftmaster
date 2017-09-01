@@ -1,3 +1,3 @@
 # Abstraction of a card-type, eg 'Land'
-class Type < ActiveRecord::Base
+class Type < ApplicationRecord
 end

@@ -1,4 +1,4 @@
-class Draft < ActiveRecord::Base
+class Draft < ApplicationRecord
   has_many :players
   has_many :rounds
   before_create :create_first_round
